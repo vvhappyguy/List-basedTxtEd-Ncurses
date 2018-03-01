@@ -28,6 +28,12 @@ typedef struct list_text{
     struct line *lines;
 } text;
 
+text init_text(){
+    text txt;
+    mvaddstr(0,0,"Init - Text\n");
+    return txt;
+}
+
 /*
     Иерархия:
     Буква -> Слово -> Строка -> Текст
@@ -45,15 +51,25 @@ typedef struct list_text{
     Аналогично для строк и текста.
 */
 
-int main(int argc, char *argv[]){
-
+int main(int argc, char *argv[])
+{
+    printf("Begin - Main\n");
     if (!initscr())
     {
         fprintf(stderr, "Error initialising ncurses.\n");
         exit(1);
     }
-
     initscr();
+    curs_set(0);
+    refresh();
+    WINDOW *win = newwin(30, 30, 10, 10);
+    text txt = init_text();
+    box(win, 0, 0);
+    wrefresh(win);
+    getch();
+
+    delwin(win);
+    /*
 
         int ch;
      nodelay(stdscr, TRUE);
@@ -67,9 +83,10 @@ int main(int argc, char *argv[]){
 
           }
      }
-       
+*/       
 
     endwin();
 
+    printf("End - Main\n");
     return 0;
 }
