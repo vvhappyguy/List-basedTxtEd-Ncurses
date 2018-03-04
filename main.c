@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "ncurses.h"
 #include <stdlib.h>
+#include <string.h>
 
 //Буква
 typedef struct list_letter{
@@ -37,9 +38,12 @@ text init_text(){
 /*
     Иерархия:
     Буква -> Слово -> Строка -> Текст
-    Слово = б + ... + б + '\s';
-    Строка = сл + ... + сл + '\n';
+    Слово = б + ... + б;
+    ' ' - разделяющий слова символ;
+    Строка = сл + ... + сл;
+    '\n' - разделяющий строки символ
     Текст = стр + ... + стр + ...;
+
     1-ая буква:
     chtype ..
     *prev = void*;
@@ -53,7 +57,34 @@ text init_text(){
 
 int main(int argc, char *argv[])
 {
+    enum State{
+        LW,//In-Line and In-Word input
+        LNW,//In-Line but not In-Word input
+        NLNW,//Not Line and Word input
+    };
     printf("Begin - Main\n");
+    int counter;
+    char input[127];
+    gets(input);
+    enum State typing = 2; // Variable for tracking state of user's typing
+    printf("Строка: %s\nДлина строки: %d",input,strlen(input));
+    for(counter = 0; counter < strlen(input); counter++){
+        if(input[counter] != ' ' && input[counter] != '\n'){
+            if(typing == 2){
+                //If adding new letter to word
+            } else if 
+        } else if (input[counter] == ' ' && input[counter] != '\n'){
+
+        } else if (input[counter] == '\n'){
+            //If ending of line
+
+        } else {
+            //Non-correct input
+            printf("[ERR] = Non-correct input string.");
+            break;
+        }
+    }
+/*
     if (!initscr())
     {
         fprintf(stderr, "Error initialising ncurses.\n");
@@ -69,9 +100,7 @@ int main(int argc, char *argv[])
     getch();
 
     delwin(win);
-    /*
-
-        int ch;
+    int ch;
      nodelay(stdscr, TRUE);
      for (;;) {
           if ((ch = getch()) == ERR) {
@@ -83,9 +112,8 @@ int main(int argc, char *argv[])
 
           }
      }
-*/       
-
     endwin();
+*/  
 
     printf("End - Main\n");
     return 0;
