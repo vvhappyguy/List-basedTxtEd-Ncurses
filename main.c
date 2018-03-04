@@ -1,39 +1,8 @@
 #include "stdio.h"
-#include "ncurses.h"
 #include <stdlib.h>
 #include <string.h>
-
-//Буква
-typedef struct list_letter{
-    struct letter *prev;
-    struct letter *next;
-    chtype lett;
-} letter;
-
-//Слово
-typedef struct list_word{
-    chtype *letters;
-    struct word *prev;
-    struct word *next;
-} word;
-
-//Строка
-typedef struct list_line{
-    struct word *words;
-    struct line *prev;
-    struct word *next;
-} line;
-
-//Текст
-typedef struct list_text{
-    struct line *lines;
-} text;
-
-text init_text(){
-    text txt;
-    mvaddstr(0,0,"Init - Text\n");
-    return txt;
-}
+#include "ncurses.h"
+#include "func.h"
 
 /*
     Иерархия:
@@ -71,13 +40,20 @@ int main(int argc, char *argv[])
     for(counter = 0; counter < strlen(input); counter++){
         if(input[counter] != ' ' && input[counter] != '\n'){
             if(typing == 2){
+                //If starting new word and new line
+                typing = 0;
+            } else if (typing == 1){
+                //If Starting new word, but not new line
+                typing = 0;
+            } else if (typing == 0){
                 //If adding new letter to word
-            } else if 
+            }
         } else if (input[counter] == ' ' && input[counter] != '\n'){
-
+            //If previous word ended, but not line
+            typing = 1;
         } else if (input[counter] == '\n'){
-            //If ending of line
-
+            //If ending of line and word
+            typing = 2;
         } else {
             //Non-correct input
             printf("[ERR] = Non-correct input string.");
