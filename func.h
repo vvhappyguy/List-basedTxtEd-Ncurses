@@ -10,4 +10,4 @@ text init_text();//Init-Text Function
 
 //End Word Fucntion
 //End Line Function
-//End Text
+//End Text Function

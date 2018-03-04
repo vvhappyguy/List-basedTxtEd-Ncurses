@@ -1,10 +1,7 @@
-#ifndef <stdio.h>
-    #include <stdio.h>
-#endif
-
-#ifndef "func.h"
-    #include "func.h"
-#endif
+#include <stdlib.h>
+#include <string.h>
+#include "ncurses.h"
+#include "lstruct.h"
 
 text init_text(){
     text txt;

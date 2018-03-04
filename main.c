@@ -1,8 +1,7 @@
-#include "stdio.h"
-#include <stdlib.h>
-#include <string.h>
-#include "ncurses.h"
 #include "func.h"
+#include "stdio.h"
+#include <string.h>
+
 
 int main(int argc, char *argv[])
 {
