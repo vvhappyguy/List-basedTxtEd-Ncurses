@@ -4,26 +4,6 @@
 #include "ncurses.h"
 #include "func.h"
 
-/*
-    Иерархия:
-    Буква -> Слово -> Строка -> Текст
-    Слово = б + ... + б;
-    ' ' - разделяющий слова символ;
-    Строка = сл + ... + сл;
-    '\n' - разделяющий строки символ
-    Текст = стр + ... + стр + ...;
-
-    1-ая буква:
-    chtype ..
-    *prev = void*;
-    *next = 2 буква; (появляется только после второй буквы)
-    n-ая буква:
-    chtype ..
-    *prev = *((n-1)-ая буква)
-    *next = void*; (появляется после встречи '\s')
-    Аналогично для строк и текста.
-*/
-
 int main(int argc, char *argv[])
 {
     printf("Begin - Main\n");
@@ -31,7 +11,7 @@ int main(int argc, char *argv[])
     char input[127];
     gets(input);
     enum State typing = 2; // Variable for tracking state of user's typing
-    printf("Строка: %s\nДлина строки: %d",input,strlen(input));
+    printf("Строка: %s\nДлина строки: %ld",input,strlen(input));
     for(counter = 0; counter < strlen(input); counter++){
         if(input[counter] != ' ' && input[counter] != '\n'){
             if(typing == 2){

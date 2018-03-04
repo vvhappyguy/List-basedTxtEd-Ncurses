@@ -2,11 +2,7 @@
     #include <stdio.h>
 #endif
 
-#ifndef "lstruct.h"
-    #include "structs.h"
-#endif
-
-#ifdef "func.h"
+#ifndef "func.h"
     #include "func.h"
 #endif
 
