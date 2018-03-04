@@ -1,6 +1,13 @@
 #include "ncurses.h"
 #include <stdio.h>
 
+//Состояние ввода
+enum State{
+    LW,//In-Line and In-Word input
+    LNW,//In-Line but not In-Word input
+    NLNW,//Not Line and Word input
+};
+
 //Буква
 typedef struct list_letter{
     struct list_letter *prev;

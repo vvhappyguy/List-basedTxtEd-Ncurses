@@ -26,11 +26,6 @@
 
 int main(int argc, char *argv[])
 {
-    enum State{
-        LW,//In-Line and In-Word input
-        LNW,//In-Line but not In-Word input
-        NLNW,//Not Line and Word input
-    };
     printf("Begin - Main\n");
     int counter;
     char input[127];
