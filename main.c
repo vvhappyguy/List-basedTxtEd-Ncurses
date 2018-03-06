@@ -5,16 +5,17 @@
 //Setup Function For Init Modules of Program
 void setup(){
 	printf("SETUP:\n");
-	int ch;//.. for input chars:w
-	enum State typing = 2;//Variable for tracking state of user's typing
+	extern enum State typing;//Variable for tracking state of user's typing
+    typing = 2;
 }
 
 //Arbitr Loop function
 void loop(){
+    int ch;//.. for input chars
 	printf("LOOP:\n");
 	for(;;){
 		if((ch = getch()) == ERR){
-    			if(input[counter] != ' ' && input[counter] != '\n'){
+    			if(ch != ' ' && ch != '\n'){
             		if(typing == 2){
                 		//If starting new word and new line
                 		typing = 0;
@@ -24,10 +25,10 @@ void loop(){
             		} else if (typing == 0){
                 		//If adding new letter to word
             		}
-        		} else if (input[counter] == ' ' && input[counter] != '\n'){
+        		} else if (ch == ' ' && ch != '\n'){
             		//If previous word ended, but not line
             		typing = 1;
-        		} else if (input[counter] == '\n'){
+        		} else if (ch == '\n'){
             		//If ending of line and word
             	typing = 2;
         		} else {
