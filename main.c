@@ -9,6 +9,7 @@ void setup(){
     typing = 2;
 }
 
+
 //Arbitr Loop function
 void loop(){
     int ch;//.. for input chars
