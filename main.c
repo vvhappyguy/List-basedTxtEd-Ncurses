@@ -2,12 +2,11 @@
 #include "stdio.h"
 #include <string.h>
 
+
+
 //Setup Function For Init Modules of Program
-void setup(){
-	printf("SETUP:\n");
-	extern enum State typing;//Variable for tracking state of user's typing
-    typing = 2;
-}
+	enum State typing = 2;//Variable for tracking state of user's typing
+
 
 
 //Arbitr Loop function
@@ -20,18 +19,22 @@ void loop(){
             		if(typing == 2){
                 		//If starting new word and new line
                 		typing = 0;
+                        printf("%d\n",typing);
             		} else if (typing == 1){
                 		//If Starting new word, but not new line
                 		typing = 0;
+                        printf("%d\n",typing);
             		} else if (typing == 0){
                 		//If adding new letter to word
             		}
         		} else if (ch == ' ' && ch != '\n'){
             		//If previous word ended, but not line
             		typing = 1;
+                    printf("%d\n",typing);
         		} else if (ch == '\n'){
             		//If ending of line and word
-            	typing = 2;
+            	    typing = 2;
+                    printf("%d\n",typing);
         		} else {
             		//Non-correct input
             		printf("[ERR] = Non-correct input string.");
@@ -45,7 +48,6 @@ void loop(){
 int main(int argc, char *argv[])
 {
     printf("Begin - Main\n");
- 	 setup();
 	 loop();
 /*
     if (!initscr())
